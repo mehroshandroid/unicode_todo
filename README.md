@@ -8,6 +8,7 @@ Its a todo app which make use of local storage package hive. Firebase database i
 
 Package used:
 - hive
+- riverpod
 - firebase database
 - firebase auth
 - work manager
