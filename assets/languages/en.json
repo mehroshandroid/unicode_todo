@@ -1,5 +1,11 @@
 {
   "enter_email": "Enter email",
   "enter_password": "Enter password",
-  "login": "Login"
+  "login": "Login",
+  "to_do": "To do",
+  "completed_tasks": "Complete Tasks",
+  "add_todo_item": "Add todo item",
+  "enter_valid_task": "Please enter a valid task.",
+  "settings": "Settings",
+  "clear_all_tasks": "Clear all tasks"
 }

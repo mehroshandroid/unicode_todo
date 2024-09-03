@@ -69,7 +69,7 @@ class LoginScreen extends ConsumerWidget {
                       child: ElevatedButton(
                         onPressed: () {
                           // Add login logic here
-                          clearStackNavigate(context, const DashboardScreen());
+                          clearStackNavigate(context, DashboardScreen());
                         },
                         child: Text(
                             AppLocalizations.of(context)!.translate('login')),
