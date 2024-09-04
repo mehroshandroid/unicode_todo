@@ -28,6 +28,14 @@ class DashboardScreen extends ConsumerWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: GestureDetector(
+              child: const Icon(Icons.refresh),
+              onTap: () {
+                ref.read(tasksProvider.notifier).syncTasksWithFirebase();
+              },
+            ),
+          ),Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: GestureDetector(
               child: const Icon(Icons.settings),
               onTap: () {
                 navigateTo(context, const SettingsScreen());
