@@ -9,16 +9,18 @@ Its a todo app which make use of local storage package hive. Firebase database i
 Package used:
 - hive for local storage
 - riverpod for state management
-- firebase cloudstore for online database and data syncing
-- firebase auth for managing auth of the applicaiton
+- firebase cloud-store for online database and data syncing
+- firebase auth for managing auth of the application
 - work manager for syncing of tasks in the background
 
 Future improvements:
 - time based syncing
 - better design , one that is provided by professional app designer
-- iOS compatiblity specialy firebase related configurations
+- iOS compatibility specially firebase related configurations
 - forgot password flow
 
+Integration tests can be run be following command:
+flutter test integration_test/integration_test.dart
 
 
 

@@ -38,6 +38,7 @@ class DashboardScreen extends ConsumerWidget {
           ),Padding(
             padding: const EdgeInsets.all(8.0),
             child: GestureDetector(
+              key: const ValueKey('settingsButton'),
               child: const Icon(Icons.settings),
               onTap: () {
                 navigateTo(context, const SettingsScreen());
@@ -55,6 +56,7 @@ class DashboardScreen extends ConsumerWidget {
               children: [
                 Expanded(
                   child: TextField(
+                    key: const ValueKey('taskField'),
                     controller: taskController,
                     decoration: InputDecoration(
                       hintText: AppLocalizations.of(context)!
@@ -68,6 +70,7 @@ class DashboardScreen extends ConsumerWidget {
                   ),
                 ),
                 IconButton(
+                  key: const ValueKey('addTaskButton'),
                   icon: const Icon(Icons.add),
                   onPressed: () {
                     if (taskController.text.trim().isEmpty) {

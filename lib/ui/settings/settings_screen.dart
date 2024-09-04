@@ -39,6 +39,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             ),
             const SizedBox(height: 16.0,),
             GestureDetector(
+              key: const ValueKey('logoutButton'),
               child: const Text("Log out", style: TextStyle(
                 fontSize: 16
               ),),

@@ -36,6 +36,7 @@ class LoginScreen extends ConsumerWidget {
                     SizedBox(
                       width: double.infinity,
                       child: TextField(
+                        key: const ValueKey('emailField'),
                         maxLength: 150,
                         keyboardType: TextInputType.emailAddress,
                         decoration: InputDecoration(
@@ -50,6 +51,7 @@ class LoginScreen extends ConsumerWidget {
                     SizedBox(
                       width: double.infinity,
                       child: TextField(
+                        key: const ValueKey('passwordField'),
                         decoration: InputDecoration(
                           icon: const Icon(Icons.lock),
                           hintText: AppLocalizations.of(context)!
@@ -78,6 +80,7 @@ class LoginScreen extends ConsumerWidget {
                       SizedBox(
                         width: double.infinity,
                         child: ElevatedButton(
+                          key: const ValueKey('loginButton'),
                           onPressed: () {
                             // Add login logic here
                             _loginUser(context, ref, true);

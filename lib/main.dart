@@ -36,7 +36,7 @@ Future<void> main() async {
     "syncTaskWithFirebase",
     frequency: const Duration(hours: 6),
   );
-
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const ProviderScope(child: MyApp()));
 }
 
