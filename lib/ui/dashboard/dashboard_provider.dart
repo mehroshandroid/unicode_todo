@@ -130,4 +130,5 @@ class TasksNotifier extends StateNotifier<List<Task>> {
       loadTasks();
     }
   }
+
 }

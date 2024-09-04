@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "122340460189",
+    "project_id": "unicode-todo",
+    "storage_bucket": "unicode-todo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:122340460189:android:a3cb303a9d350cfabc3674",
+        "android_client_info": {
+          "package_name": "com.example.unicode_todo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzRIl9B00S7SYIb5FXWXobgYSnSPtRYhc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
