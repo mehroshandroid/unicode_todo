@@ -18,6 +18,10 @@ Future improvements:
 - better design , one that is provided by professional app designer
 - iOS compatiblity specialy firebase related configurations
 - forgot password flow
+
+
+
+
 ![img.png](img.png)
 
 
