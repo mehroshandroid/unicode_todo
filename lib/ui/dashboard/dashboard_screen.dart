@@ -14,6 +14,8 @@ class DashboardScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // Fetch and sync tasks from Firebase when the app launches
+    ref.read(tasksProvider.notifier).fetchAndSyncTasksFromFirebase();
     final tasks = ref.watch(tasksProvider);
     final activeTasks = tasks.where((task) => !task.isCompleted).toList();
     final completedTasks = tasks.where((task) => task.isCompleted).toList();
@@ -26,6 +28,14 @@ class DashboardScreen extends ConsumerWidget {
         ),
         actions: [
           Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: GestureDetector(
+              child: const Icon(Icons.refresh),
+              onTap: () {
+                ref.read(tasksProvider.notifier).syncTasksWithFirebase();
+              },
+            ),
+          ),Padding(
             padding: const EdgeInsets.all(8.0),
             child: GestureDetector(
               child: const Icon(Icons.settings),
@@ -51,6 +61,10 @@ class DashboardScreen extends ConsumerWidget {
                           .translate('add_todo_item'),
                     ),
                     textInputAction: TextInputAction.done,
+                    onSubmitted: (value){
+                      // Add the task to the list
+                      addTask(ref, value);
+                    },
                   ),
                 ),
                 IconButton(
@@ -66,15 +80,7 @@ class DashboardScreen extends ConsumerWidget {
                       );
                     } else {
                       // Add the task to the list
-                      ref.read(tasksProvider.notifier).addTask(
-                            Task(
-                                id: DateTime.now()
-                                    .millisecondsSinceEpoch
-                                    .toString(),
-                                title: taskController.text.trim()),
-                          );
-                      // Clear the text field
-                      taskController.clear();
+                      addTask(ref,taskController.text.trim());
                     }
                   },
                 ),
@@ -208,5 +214,17 @@ class DashboardScreen extends ConsumerWidget {
         ),
       ),
     );
+  }
+
+  void addTask(WidgetRef ref, String text) {
+    ref.read(tasksProvider.notifier).addTask(
+          Task(
+              id: DateTime.now()
+                  .millisecondsSinceEpoch
+                  .toString(),
+              title: text),
+        );
+    // Clear the text field
+    taskController.clear();
   }
 }

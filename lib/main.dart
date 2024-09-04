@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:unicode_todo/core/app_localizations.dart';
 import 'package:unicode_todo/ui/dashboard/dashboard_provider.dart';
 import 'package:unicode_todo/ui/dashboard/dashboard_screen.dart';
