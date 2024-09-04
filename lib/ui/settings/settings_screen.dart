@@ -1,7 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:unicode_todo/core/app_localizations.dart';
+import 'package:unicode_todo/ui/login/login_screen.dart';
+import 'package:unicode_todo/utils/nav_utils.dart';
 
 import '../dashboard/dashboard_provider.dart';
 
@@ -32,6 +36,18 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               ),),
               onTap: () {
                 ref.read(tasksProvider.notifier).clearAllTasks();
+              },
+            ),
+            const SizedBox(height: 16.0,),
+            GestureDetector(
+              child: const Text("Log out", style: TextStyle(
+                fontSize: 16
+              ),),
+              onTap: () async {
+                FirebaseAuth.instance.signOut();
+                var pref = await SharedPreferences.getInstance();
+                pref.setString('userUid', "");
+                clearStackNavigate(context, LoginScreen());
               },
             )
           ],

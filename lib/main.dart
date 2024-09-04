@@ -1,10 +1,13 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:unicode_todo/core/app_localizations.dart';
 import 'package:unicode_todo/ui/dashboard/dashboard_provider.dart';
+import 'package:unicode_todo/ui/dashboard/dashboard_screen.dart';
 import 'package:unicode_todo/ui/login/login_screen.dart';
 import 'package:workmanager/workmanager.dart';
 import 'firebase_options.dart';
@@ -35,15 +38,15 @@ Future<void> main() async {
     frequency: const Duration(hours: 6),
   );
 
-  runApp(const ProviderScope(child: MyApp()) );
+  runApp(const ProviderScope(child: MyApp()));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends ConsumerWidget {
   const MyApp({super.key});
 
   // This widget is the root of your application.
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return MaterialApp(
       title: 'Todo',
       theme: ThemeData(
@@ -70,7 +73,16 @@ class MyApp extends StatelessWidget {
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
       ],
-      home: LoginScreen(),
+      home: _checkUserLoggedIn() ? DashboardScreen() : LoginScreen(),
     );
+  }
+
+  bool _checkUserLoggedIn() {
+    User? user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

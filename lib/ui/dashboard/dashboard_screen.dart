@@ -5,7 +5,7 @@ import 'package:unicode_todo/ui/settings/settings_screen.dart';
 
 import '../../core/app_localizations.dart';
 import '../../data/task_dto.dart';
-import '../../utils/display_utils.dart';
+import '../../utils/nav_utils.dart';
 
 class DashboardScreen extends ConsumerWidget {
   DashboardScreen({super.key});
@@ -109,13 +109,14 @@ class DashboardScreen extends ConsumerWidget {
                               context: context,
                               builder: (context) {
                                 final TextEditingController editController =
-                                TextEditingController(text: task.title);
+                                    TextEditingController(text: task.title);
 
                                 return AlertDialog(
                                   title: const Text('Edit Task'),
                                   content: TextField(
                                     controller: editController,
-                                    decoration: const InputDecoration(hintText: 'Enter new title'),
+                                    decoration: const InputDecoration(
+                                        hintText: 'Enter new title'),
                                   ),
                                   actions: [
                                     TextButton(
@@ -126,18 +127,21 @@ class DashboardScreen extends ConsumerWidget {
                                     ),
                                     TextButton(
                                       onPressed: () {
-                                        final newTitle = editController.text.trim();
+                                        final newTitle =
+                                            editController.text.trim();
                                         if (newTitle.isNotEmpty) {
                                           ref
                                               .read(tasksProvider.notifier)
-                                              .editTask(originalIndex, newTitle);
+                                              .editTask(
+                                                  originalIndex, newTitle);
                                           Navigator.of(context).pop();
                                         } else {
                                           // Show a message if the input is empty
-                                          ScaffoldMessenger.of(context).showSnackBar(
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
                                             const SnackBar(
-                                              content:
-                                              Text('Task title cannot be empty.'),
+                                              content: Text(
+                                                  'Task title cannot be empty.'),
                                             ),
                                           );
                                         }
@@ -154,7 +158,9 @@ class DashboardScreen extends ConsumerWidget {
                           icon: Icon(Icons.delete),
                           onPressed: () {
                             // Delete the task
-                            ref.read(tasksProvider.notifier).deleteTask(originalIndex);
+                            ref
+                                .read(tasksProvider.notifier)
+                                .deleteTask(originalIndex);
                           },
                         ),
                       ],

@@ -7,5 +7,6 @@
   "add_todo_item": "Add todo item",
   "enter_valid_task": "Please enter a valid task.",
   "settings": "Settings",
-  "clear_all_tasks": "Clear all tasks"
+  "clear_all_tasks": "Clear all tasks",
+  "sign_up": "Sign up"
 }
