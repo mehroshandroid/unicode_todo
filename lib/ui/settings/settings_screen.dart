@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -45,6 +44,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               ),),
               onTap: () async {
                 FirebaseAuth.instance.signOut();
+                ref.read(tasksProvider.notifier).clearAllTasks();
                 var pref = await SharedPreferences.getInstance();
                 pref.setString('userUid', "");
                 clearStackNavigate(context, LoginScreen());
