@@ -21,6 +21,7 @@ Future improvements:
 
 Integration tests can be run be following command:
 flutter test integration_test/integration_test.dart
+Note: integration test are not running at the moment because of hive issue, will take it up later
 
 
 
